@@ -70,7 +70,7 @@ body:
         - Utama
         - Sedang
         - Ringan
-      validations:
+    validations:
       required: true
     
   - type: dropdown
