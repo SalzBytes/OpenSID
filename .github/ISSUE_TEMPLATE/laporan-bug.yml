@@ -10,10 +10,10 @@ body:
         Terima kasih sudah meluangkan waktu untuk membuat laporan bug/error.
 
         Sebelum Anda memulai, pastikan tidak ada issue yang sama. Silakan mencari terlebih dahulu di issue yang sudah di [close](https://github.com/OpenSID/OpenSID/issues?q=is%3Aissue+is%3Aclosed) atau di [rilis umum yang akan datang](https://github.com/OpenSID/OpenSID/wiki/Rilis-Umum-Yang-Akan-Datang).
-        Jika pada rilis umum yang akan datang sudah ditemukan bug yang dimaksud silahkan menuggu untuk diperbaiki dirilis berikutnya. Laporan Bug ini difokuskan pada Versi Premium dan dipastikan anda menggunakan versi Premium, adapun laporan Bug umum akan dicek dahulu apakah sudah diperbaiki di versi premium berikutnya.
+        **Jika pada rilis Umum yang akan datang sudah diperbaiki bug yang dimaksud silahkan menunggu perbaikan tersebut dirilis berikutnya. Laporan Bug ini difokuskan pada Versi Premium dan dipastikan anda menggunakan versi Premium. Adapun laporan Bug Umum akan dicek dahulu apakah sudah diperbaiki di versi Premium berikutnya.**
 
-        Harap tidak melaporkan masalah instal OpenSID. 
-        Masalah pada waktu install harap ditanyakan di https://www.facebook.com/groups/komunitasopendesa 
+        Harap tidak melaporkan masalah instal OpenSID atau pertanyaan penggunaan OpenSID. 
+        Masalah pada waktu install atau pertanyaan penggunaan OpenSID harap ditanyakan di https://www.facebook.com/groups/komunitasopendesa 
         atau di https://t.me/komunitasopensidstop, karena terkait sistem masing2 pengguna.
 
         ---
@@ -58,11 +58,27 @@ body:
         Lampirkan isi file di folder `logs` atau tangkapan error di console inspector browser.
     validations:
       required: true
-      
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Dampak bug pada layanan
+      description: |
+        Seberapa dampak bug ini pada layanan? 
+      options:
+        - Kritis  
+        - Utama
+        - Sedang
+        - Ringan
+      validations:
+      required: true
+    
   - type: dropdown
     id: rilis-version
     attributes:
       label: Rilis Versi OpenSID
+      description: |
+        Error ini terjadi di OpenSID Umum atau Premium? 
       options:
         - Rilis Premium
         - Rilis Umum
