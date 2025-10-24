@@ -70,6 +70,7 @@ class Tracker
         }
 
         $this->kirimData();
+        $config = identitas();
     }
 
     public function kirimData(): void

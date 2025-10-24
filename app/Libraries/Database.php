@@ -125,7 +125,7 @@ class Database
         }
 
         // Run additional migrations
-        $defaultMigrasi = ['migrasi_surat_bawaan', 'migrasi_beta', 'migrasi_rev', 'migrasi_umum'];
+        $defaultMigrasi = ['migrasi_surat_bawaan', 'migrasi_beta', 'migrasi_rev', 'migrasi_umum', 'migrasi_module'];
 
         foreach ($defaultMigrasi as $migrateName) {
             if ($this->getShowProgress()) {
@@ -161,12 +161,10 @@ class Database
         set_session('success', 'Migrasi berhasil dilakukan');
     }
 
-    public function checkMigration($install = false): void
+    public function checkMigration($install = true): void
     {
-        $premium = new CekService();
-
         $doesntHaveMigrasiConfigId = ! Schema::hasColumn('migrasi', 'config_id');
-        if (($premium->validasiVersi($install) || $install) && Migrasi::when($doesntHaveMigrasiConfigId, static fn ($q) => $q->withoutConfigId())->where('versi_database', VERSI_DATABASE)->doesntExist()) {
+        if (Migrasi::when($doesntHaveMigrasiConfigId, static fn ($q) => $q->withoutConfigId())->where('versi_database', VERSI_DATABASE)->doesntExist()) {
             $this->migrateDatabase($install);
         }
     }
