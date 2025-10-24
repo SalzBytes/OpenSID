@@ -70,10 +70,10 @@ body:
         - Sedang, gangguan kecil, fungsi utama tetap jalan
         - Ringan, masalah tampilan atau kosmetik
       options:
-        - Kritis  
-        - Utama
-        - Sedang
         - Ringan
+        - Sedang
+        - Utama
+        - Kritis  
     validations:
       required: true
     
