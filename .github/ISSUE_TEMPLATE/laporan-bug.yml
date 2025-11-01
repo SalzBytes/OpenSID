@@ -103,7 +103,7 @@ body:
         Kalau tidak terjadi pada Layanan SiapPakai atau Diskominfo PKS, harap verifikasi error ini juga terjadi di berputar.opendesa.id
         - Tidak terjadi, error ini tidak ditemukan di berputar.opendesa.id
         - Ya, error ini juga terjadi di berputar.opendesa.id
-        - Tidak perlu, sudah hosting pada SiapPakai atau Diskominfo PKS
+        - Tidak perlu, error terjadi pada SiapPakai atau Diskominfo PKS
       options:
         - Tidak terjadi
         - Ya
