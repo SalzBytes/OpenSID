@@ -78,6 +78,40 @@ body:
       required: true
     
   - type: dropdown
+    id: hosting
+    attributes:
+      label: Hosting terjadinya error
+      description: |
+        OpenSID yg bermasalah dipasang di mana? 
+        - Mandiri, hosting pada server yg dikelola sendiri
+        - SiapPakai, hosting pada Layanan OpenSID SiapPakai
+        - Diskominfo PKS, hosting pada Diskominfo yg menerapkan Ekosistem Satu Data OpenSID
+        - Diskominfo Mandiri, hosting pada Diskominfo yg mengelola OpenSID sendiri
+      options:
+        - Mandiri
+        - SiapPakai
+        - Diskominfo PKS
+        - Diskominfo Mandiri  
+    validations:
+      required: true
+    
+  - type: dropdown
+    id: berputar
+    attributes:
+      label: Apakah error ini terjadi juga di berputar.opendesa.id
+      description: |
+        Kalau tidak terjadi pada Layanan SiapPakai atau Diskominfo PKS, harap verifikasi error ini juga terjadi di berputar.opendesa.id
+        - Tidak terjadi, error ini tidak ditemukan di berputar.opendesa.id
+        - Ya, error ini juga terjadi di berputar.opendesa.id
+        - Tidak perlu, sudah hosting pada SiapPakai atau Diskominfo PKS
+      options:
+        - Tidak terjadi
+        - Ya
+        - Tidak perlu
+    validations:
+      required: true
+    
+  - type: dropdown
     id: rilis-version
     attributes:
       label: Rilis Versi OpenSID
@@ -96,6 +130,14 @@ body:
       description: |
         Error ini terjadi di rilis/versi berapa? 
         Rilis Umum (mis. v2306.0.0) atau Premium (mis. v2306.0.0-premium)?
+    validations:
+      required: true
+
+  - type: input
+    id: domain
+    attributes:
+      label: Domain terjadinya error
+      description: Domain OpenSID tempat terjadinya error
     validations:
       required: true
 
