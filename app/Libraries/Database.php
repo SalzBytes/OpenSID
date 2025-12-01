@@ -44,7 +44,6 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
-use Modules\Pelanggan\Services\CekService;
 
 class Database
 {
@@ -55,11 +54,6 @@ class Database
     public string $minimumVersion;
     private array $databaseOption;
     private string $databaseName;
-
-    /**
-     * @var CekService
-     */
-    public $premium;
 
     public function __construct()
     {
@@ -91,6 +85,10 @@ class Database
         $version        = (int) str_replace('.', '', $this->checkCurrentVersion());
         $minimumVersion = (int) str_replace('.', '', $this->minimumVersion);
         $currentVersion = currentVersion();
+
+        if (! $install && $version < $minimumVersion) {
+            show_error('<h2>Silakan upgrade dulu ke OpenSID dengan minimal versi ' . $this->minimumVersion . '</h2>');
+        }
 
         $migrations = File::files('donjo-app/models/migrations');
 
@@ -161,7 +159,7 @@ class Database
         set_session('success', 'Migrasi berhasil dilakukan');
     }
 
-    public function checkMigration($install = true): void
+    public function checkMigration($install = false): void
     {
         $doesntHaveMigrasiConfigId = ! Schema::hasColumn('migrasi', 'config_id');
         if (Migrasi::when($doesntHaveMigrasiConfigId, static fn ($q) => $q->withoutConfigId())->where('versi_database', VERSI_DATABASE)->doesntExist()) {
